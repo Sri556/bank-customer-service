@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Docker Build') {
       steps {
-        sh '/usr/bin/docker build -t bankrepo:latest .'
+        sh '/usr/bin/docker build -t bankrepo .'
       }
     }
     stage('Push image') {
