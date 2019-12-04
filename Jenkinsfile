@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Docker Build') {
       steps {
-        sh '/usr/bin/docker build -t sri556/bank-customer-service:latest .'
+        sh '/usr/bin/docker build -t bankrepo:latest .'
       }
     }
     stage('Push image') {
