@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools { 
-        //maven 'Maven3'
+        maven 'Maven3'
         jdk 'jdk'
   }
   stages {
@@ -25,10 +25,10 @@ pipeline {
     }
     stage('Push image') {
       steps {
-        //withDockerRegistry([credentialsId: 'dvisanand', url: "https://index.docker.io/v1/"]) {
-        //withDockerRegistry(credentialsId: 'dvishalanand', url: 'https://118463809662.dkr.ecr.ap-south-1.amazonaws.com/visanand') {
-          //sh '/usr/bin/docker push dvisanand/bank-customer-service:latest'
-          //sh '/usr/bin/docker push 118463809662.dkr.ecr.ap-south-1.amazonaws.com/visanand:latest'
+        withDockerRegistry([credentialsId: 'dvisanand', url: "https://index.docker.io/v1/"]) {
+        withDockerRegistry(credentialsId: 'dvishalanand', url: 'https://118463809662.dkr.ecr.ap-south-1.amazonaws.com/visanand') {
+          sh '/usr/bin/docker push dvisanand/bank-customer-service:latest'
+          sh '/usr/bin/docker push 118463809662.dkr.ecr.ap-south-1.amazonaws.com/visanand:latest'
          withDockerRegistry(credentialsId: 'ecr:ap-south-1:mycredentials', url: 'http://118463809662.dkr.ecr.ap-south-1.amazonaws.com/myrepo') {
           sh 'docker tag dvisanand/bank-customer-service:latest 118463809662.dkr.ecr.ap-south-1.amazonaws.com/myrepo:v2'
           sh 'docker push 118463809662.dkr.ecr.ap-south-1.amazonaws.com/myrepo:v2'
