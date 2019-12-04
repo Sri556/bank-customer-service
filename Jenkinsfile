@@ -31,8 +31,8 @@ pipeline {
           //sh '/usr/bin/docker tag  bank-customer-service sri556/bankrepo:latest'
           //sh '/usr/bin/docker push sri556/bankrepo:latest'
          withDockerRegistry(credentialsId: 'ecr:ap-south-1:mycredentials', url: 'https://651843681614.dkr.ecr.ap-south-1.amazonaws.com/myrepo') {
-          sh 'docker tag myrepo:latest 651843681614.dkr.ecr.ap-south-1.amazonaws.com/myrepo:latest:v2'
-          sh 'docker push 651843681614.dkr.ecr.ap-south-1.amazonaws.com/myrepo:latest:v2'
+          sh 'docker tag myrepo:latest 651843681614.dkr.ecr.ap-south-1.amazonaws.com/myrepo:latest'
+          sh 'docker push 651843681614.dkr.ecr.ap-south-1.amazonaws.com/myrepo:latest'
         }
       }
     }
